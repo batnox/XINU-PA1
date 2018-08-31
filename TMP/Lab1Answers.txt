@@ -1,0 +1,40 @@
+1.
+
+Random scheduler advantages:
+	-No issue of starvation
+	-Schedules processes in the queue with more fairness compared to Xinu because it takes priority into account.
+	-Faster execution compared Linuxlike scheduler
+
+Random sheduler disadvantage:
+	-Since it depends on random numebr generator, there can be cases of unfair scheduling. We need to use good random number generator to make sure this doesn't happen.
+	-While selecting a process to run, it doesn't take into account how much cycles it has already used. In such cases it can be unfair when there are more than one processes with same priority.
+
+
+Linuxlike scheduler advantage:
+	-Fair scheduling even when processes have same priority.
+	-Does not face the issue of starvation
+
+Linuxlike shceduler disadvantage:
+	-Long execution time. Especially when an epoch ends. Because we have to recalculate goodness of all the processes in process table.
+	-Uses more memory.
+
+XINU scheduler advantage:
+	-Scheduelr consumes very less time
+	-Easy to implement.
+
+XINU scheduler disadvantage:
+	-Starvation problem. A lower priority process might need to wait a lot if many new higher prioity process keeps coming in ready queue.
+	
+
+
+2.
+Priority of p1 = 20, p2 = 30 and p3 = 50.
+
+If we have n processes,
+sum = sum of priorities of all the processes
+
+then the percentage of time that process x will get is tx = (px / sum) * 100 [where px is prioirity of process x].
+So to get tx% time prioirity px should be = (tx/100) * sum
+
+3.
+The NULL process gets scheduled when there is no other eligible process in the queue.
